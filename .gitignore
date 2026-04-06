@@ -1,0 +1,77 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# =========================
+# Virtual Environment
+# =========================
+venv/
+env/
+.venv/
+
+# =========================
+# Environment Variables / Secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Flask
+# =========================
+instance/
+.webassets-cache/
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Jupyter / Colab
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# VS Code / IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Build / Cache
+# =========================
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.cache/
+
+# =========================
+# FAISS / Vector DB / Generated Index Files
+# (only if you save them later)
+# =========================
+*.faiss
+*.index
+vector_store/
+faiss_index/
+
+# =========================
+# Optional: Ignore uploaded/generated docs
+# Uncomment if these are generated, not hand-written
+# =========================
+# uploads/
+# generated_docs/

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Travel Planner</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Hero Header -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="badge">✦ Powered by Gemini + RAG</div>
+      <h1>AI Travel Planner</h1>
+      <p class="subtitle">Craft your perfect journey with AI-powered itineraries grounded in real travel knowledge.</p>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+
+    <!-- Form Card -->
+    <section class="form-card">
+      <h2 class="form-title">Plan My Trip</h2>
+
+      <!-- Row 1: Destination + Budget + Days -->
+      <div class="form-row three-col">
+        <div class="form-group">
+          <label for="destination">🗺️ Destination</label>
+          <input type="text" id="destination" placeholder="e.g. Manali, Goa, Jaipur..." />
+        </div>
+        <div class="form-group">
+          <label for="budget">💰 Total Budget (₹)</label>
+          <input type="text" id="budget" placeholder="e.g. ₹15,000" />
+        </div>
+        <div class="form-group">
+          <label for="days">📅 Number of Days</label>
+          <input type="number" id="days" min="1" max="30" placeholder="e.g. 5" />
+        </div>
+      </div>
+
+      <!-- Row 2: Travel Type -->
+      <div class="form-group">
+        <label>👥 Travel Type</label>
+        <div class="travel-type-grid">
+          <label class="type-option">
+            <input type="radio" name="travel_type" value="solo" checked />
+            <span>🧍 Solo</span>
+          </label>
+          <label class="type-option">
+            <input type="radio" name="travel_type" value="couple" />
+            <span>💑 Couple</span>
+          </label>
+          <label class="type-option">
+            <input type="radio" name="travel_type" value="family" />
+            <span>👨‍👩‍👧 Family</span>
+          </label>
+          <label class="type-option">
+            <input type="radio" name="travel_type" value="friends" />
+            <span>🤝 Friends</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Row 3: Interests -->
+      <div class="form-group">
+        <label>🎯 Interests <span class="label-hint">(select all that apply)</span></label>
+        <div class="interests-grid">
+          <label class="interest-chip">
+            <input type="checkbox" value="adventure" />
+            <span>🏔️ Adventure</span>
+          </label>
+          <label class="interest-chip">
+            <input type="checkbox" value="food" />
+            <span>🍜 Food & Cuisine</span>
+          </label>
+          <label class="interest-chip">
+            <input type="checkbox" value="temples" />
+            <span>🛕 Heritage & Temples</span>
+          </label>
+          <label class="interest-chip">
+            <input type="checkbox" value="nightlife" />
+            <span>🌙 Nightlife</span>
+          </label>
+          <label class="interest-chip">
+            <input type="checkbox" value="nature" />
+            <span>🌿 Nature & Wildlife</span>
+          </label>
+          <label class="interest-chip">
+            <input type="checkbox" value="photography" />
+            <span>📸 Photography</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Row 4: Custom Query -->
+      <div class="form-group">
+        <label for="custom_query">💬 Custom Request <span class="label-hint">(optional)</span></label>
+        <textarea id="custom_query" rows="3" placeholder="e.g. We prefer offbeat places, vegetarian food only, need accommodation near the lake..."></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button class="generate-btn" id="generateBtn" onclick="generatePlan()">
+        <span class="btn-text">✦ Generate My Travel Plan</span>
+        <span class="btn-loader hidden">
+          <span class="spinner"></span> Crafting your journey...
+        </span>
+      </button>
+    </section>
+
+    <!-- Loading State (below the form) -->
+    <div class="loading-card hidden" id="loadingCard">
+      <div class="loading-dots">
+        <span></span><span></span><span></span>
+      </div>
+      <p>Searching knowledge base and crafting your itinerary with AI...</p>
+    </div>
+
+    <!-- Results Section -->
+    <section class="results-card hidden" id="resultsCard">
+
+      <!-- Sources Used -->
+      <div class="sources-bar" id="sourcesBar"></div>
+
+      <!-- The Travel Plan -->
+      <div class="plan-content" id="planContent"></div>
+
+      <!-- Actions -->
+      <div class="plan-actions">
+        <button class="action-btn" onclick="copyToClipboard()">📋 Copy Plan</button>
+        <button class="action-btn secondary" onclick="scrollToTop()">↑ Plan Another Trip</button>
+      </div>
+    </section>
+
+    <!-- Error State -->
+    <div class="error-card hidden" id="errorCard">
+      <span class="error-icon">⚠️</span>
+      <p id="errorMessage">Something went wrong. Please try again.</p>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>Built with Flask · FAISS · SentenceTransformers · Gemini 2.5 Flash</p>
+    <p class="footer-sub">A RAG-powered project for learning and exploration</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
