@@ -76,7 +76,7 @@ ai-travel-planner-rag/
 ### 1. Clone or download the project
 
 ```bash
-git clone https://github.com/yourusername/ai-travel-planner-rag.git
+git clone https://github.com/Somilgupta07/ai-travel-planner-rag.git
 cd ai-travel-planner-rag
 ```
 
